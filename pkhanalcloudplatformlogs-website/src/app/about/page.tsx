@@ -7,7 +7,7 @@ export default function About() {
       <Navbar />
       <h1 className="text-4xl font-extrabold text-gray-800">About Me</h1>
       <p className="mt-6 text-lg text-gray-700">
-        Hi, I'm [Your Name], a software developer passionate about cloud computing, DevOps, and web development.
+        DemoText
       </p>
       <ul className="mt-6 space-y-4">
         <li>
