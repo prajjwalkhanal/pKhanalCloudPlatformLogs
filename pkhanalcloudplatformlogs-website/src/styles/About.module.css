@@ -1,0 +1,25 @@
+.container {
+  font-family: Arial, sans-serif;
+}
+
+.aboutContent {
+  padding: 50px;
+  background: #f9f9f9;
+  text-align: center;
+}
+
+.aboutContent h2 {
+  font-size: 36px;
+}
+
+.aboutContent p {
+  font-size: 18px;
+  margin-top: 20px;
+}
+
+.links a {
+  margin: 0 15px;
+  color: cyan;
+  text-decoration: none;
+  font-weight: bold;
+}

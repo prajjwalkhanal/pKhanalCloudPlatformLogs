@@ -1,0 +1,18 @@
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  background: #000;
+  padding: 20px;
+  box-shadow: 0px 4px 10px rgba(0, 255, 255, 0.3);
+}
+
+.logo {
+  font-size: 14px;
+  font-weight: bold;
+  color: rgb(0, 255, 200);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-family: 'Orbitron', sans-serif;
+  text-shadow: 0px 0px 10px cyan;
+}

@@ -1,0 +1,44 @@
+/* src/styles/Home.module.css */
+.container {
+  padding: 20px;
+}
+
+.mainContent {
+  margin-top: 20px;
+}
+
+.postList {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Exactly 2 posts per row */
+  gap: 20px;
+}
+
+.internalPost {
+  background-color: #f9f9f9;
+  padding: 15px;
+  border-radius: 8px;
+}
+
+.externalPost {
+  background-color: #e0f7fa;
+  padding: 15px;
+  border-radius: 8px;
+}
+
+.localLink {
+  color: #0070f3;
+  text-decoration: none;
+}
+
+.localLink:hover {
+  text-decoration: underline;
+}
+
+.readMore {
+  margin-top: 10px;
+  display: inline-block;
+  padding: 5px 10px;
+  background-color: #0070f3;
+  color: white;
+  text-decoration: none;
+}
