@@ -4,7 +4,7 @@ import footerStyles from '../../styles/Footer.module.css'; // Renamed to avoid c
 import Link from 'next/link';
 
 // Use named export for consistency with Next.js conventions
-export default function Post4() {
+export default function Post5() {
   return (
     <div className={styles.container}>
       <Navbar />

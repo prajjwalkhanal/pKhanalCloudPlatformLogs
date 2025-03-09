@@ -16,7 +16,7 @@ export default function About() {
           Right now, I’m focused on building and optimizing cloud infrastructure—trying to make things a little smoother, a little smarter. I’ve always been drawn to innovation and the way technology keeps pushing us forward. It’s humbling to be part of that journey, learning every day and tackling new challenges.
         </p>
         <p>
-          Outside of work, I enjoy digging into the latest tools and ideas in tech, often with a cup of tea in hand. I’m just here to share what I’ve picked up along the way and maybe inspire someone else to dive into this amazing field.
+          Outside of work, I enjoy digging into the latest architectures, tools and ideas in tech, often with a cup of tea in hand. I’m just here to share what I’ve picked up along the way and maybe inspire someone else to dive into this amazing field.
         </p>
         <div className={styles.links}>
           <a
@@ -37,7 +37,7 @@ export default function About() {
       </section>
 
       <footer className={footerStyles.footer}>
-        <Link href="/">Back to Home</Link>
+        <Link href="/">Home</Link>
       </footer>
     </div>
   );

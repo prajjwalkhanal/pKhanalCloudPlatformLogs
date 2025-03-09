@@ -1,25 +1,27 @@
 .footer {
     display: flex;
-    justify-content: center;
     align-items: center;
-    background: #111;
+    justify-content: center;
+    background: #0d1117;
     padding: 20px;
-    position: fixed;
+    box-shadow: 0 4px 15px rgba(88, 166, 255, 0.2);
+    position: sticky;
     bottom: 0;
-    width: 100%;
+    z-index: 10;
+    border-bottom: 1px solid #30363d;
   }
   
   .footer a {
     margin: 0 15px;
     color: #58a6ff;
     text-decoration: none;
-    font-size: 18px;
+    font-size: 15px;
     font-weight: bold;
     transition: all 0.3s ease;
   }
   
   .footer a:hover {
-    color: #c3e88d; /* Green accent from About page on hover */
-    text-shadow: 0 0 12px rgba(195, 232, 141, 0.7); /* Matching green glow */
+    color: #c3e88d;
+    text-shadow: 0 0 12px rgba(195, 232, 141, 0.7);
   }
   

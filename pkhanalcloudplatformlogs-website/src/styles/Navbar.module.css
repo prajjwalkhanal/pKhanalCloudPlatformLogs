@@ -2,27 +2,27 @@
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  background: #0d1117; /* Matches About page bg for seamless blend */
+  background: #0d1117;
   padding: 20px;
-  box-shadow: 0 4px 15px rgba(88, 166, 255, 0.2); /* Softer blue glow to match #58a6ff */
+  box-shadow: 0 4px 15px rgba(88, 166, 255, 0.2);
   position: sticky;
   top: 0;
   z-index: 10;
-  border-bottom: 1px solid #30363d; /* Subtle border for depth */
+  border-bottom: 1px solid #30363d;
 }
 
 .logo {
   font-size: 14px;
   font-weight: bold;
-  color: #58a6ff; /* Matches About page’s accent color */
+  color: #58a6ff;
   text-transform: uppercase;
   letter-spacing: 2px;
-  font-family: 'Orbitron', sans-serif; /* Keeping the cool tech font */
-  text-shadow: 0 0 8px rgba(88, 166, 255, 0.5); /* Slightly toned-down glow */
+  font-family: 'Orbitron', sans-serif;
+  text-shadow: 0 0 8px rgba(88, 166, 255, 0.5);
   transition: color 0.3s ease, text-shadow 0.3s ease;
 }
 
 .logo:hover {
-  color: #c3e88d; /* Green accent from About page on hover */
-  text-shadow: 0 0 12px rgba(195, 232, 141, 0.7); /* Matching green glow */
+  color: #c3e88d;
+  text-shadow: 0 0 12px rgba(195, 232, 141, 0.7);
 }

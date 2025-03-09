@@ -2,7 +2,7 @@
 import { posts } from "../data/posts";
 import Navbar from "../components/Navbar";
 import styles from "../styles/Home.module.css";
-import footer from "../styles/Footer.module.css";
+import footerStyles from "../styles/Footer.module.css";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
@@ -88,7 +88,7 @@ export default function Home() {
             </div>
           ))}
         </section>
-        <footer className={footer.footer}>
+        <footer className={footerStyles.footer}>
           <Link href="/about">About Me</Link>
         </footer>
       </main>

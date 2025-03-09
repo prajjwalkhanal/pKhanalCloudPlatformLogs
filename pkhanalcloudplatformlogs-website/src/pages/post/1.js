@@ -1,6 +1,6 @@
 import Navbar from "../../components/Navbar";
 import styles from "../../styles/Post.module.css";
-import footer from "../../styles/Footer.module.css";
+import footerStyles from "../../styles/Footer.module.css";
 import Link from "next/link";
 
 export default function Post1() {
@@ -35,31 +35,31 @@ export default function Post1() {
         <pre>
           <code>
             {`Resources:
-    MyInstance:
-        Type: AWS::EC2::Instance
-        Properties:
-            ImageId: ami-0abcdef1234567890
-            InstanceType: t2.micro
-            UserData:
-                Fn::Base64: |
-                    <script>
-                    cfn-init.exe -v --stack MyStack --resource MyInstance --region us-east-1
-                    </script>
-            Metadata:
-                AWS::CloudFormation::Init:
-                    config:
-                        files:
-                            "C:\\install_mongo.ps1":
-                                content: |
-                                    Write-Output "Downloading MongoDB..."
-                                    Invoke-WebRequest -Uri "https://fastdl.mongodb.org/windows/mongodb-windows-x86_64-6.0.2-signed.msi" -OutFile "C:\mongodb.msi"
-                                    Write-Output "Installing MongoDB..."
-                                    Start-Process msiexec.exe -ArgumentList '/i C:\mongodb.msi /quiet /norestart' -Wait
-                                    Write-Output "MongoDB Installation Complete!"
-                                mode: "000644"
-                        commands:
-                            01_install_mongo:
-                                command: "powershell.exe -ExecutionPolicy Unrestricted -File C:\\install_mongo.ps1"
+MyInstance:
+  Type: AWS::EC2::Instance
+  Properties:
+    ImageId: ami-0abcdef1234567890
+    InstanceType: t2.micro
+    UserData:
+      Fn::Base64: |
+        <script>
+        cfn-init.exe -v --stack MyStack --resource MyInstance --region us-east-1
+        </script>
+    Metadata:
+      AWS::CloudFormation::Init:
+        config:
+            files:
+                "C:\\install_mongo.ps1":
+                    content: |
+                        Write-Output "Downloading MongoDB..."
+                        Invoke-WebRequest -Uri "https://fastdl.mongodb.org/windows/mongodb-windows-x86_64-6.0.2-signed.msi" -OutFile "C:\mongodb.msi"
+                        Write-Output "Installing MongoDB..."
+                        Start-Process msiexec.exe -ArgumentList '/i C:\mongodb.msi /quiet /norestart' -Wait
+                        Write-Output "MongoDB Installation Complete!"
+                    mode: "000644"
+            commands:
+                01_install_mongo:
+                    command: "powershell.exe -ExecutionPolicy Unrestricted -File C:\\install_mongo.ps1"
 `}
           </code>
         </pre>
@@ -97,7 +97,7 @@ Write-Output "CloudFormation stack $stackName is being created."
         </p>
       </section>
 
-      <footer className={footer.footer}>
+      <footer className={footerStyles.footer}>
         <Link href="/about">About Me</Link>
       </footer>
     </div>
