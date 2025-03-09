@@ -5,6 +5,21 @@
 .blogContent {
   padding: 50px;
   background: #f9f9f9;
+  text-align: justify;
+}
+
+.blogContent pre {
+  background: #fff;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  overflow-x: auto;
+  white-space: pre;
+}
+
+.blogContent code {
+  font-family: "Courier New", Courier, monospace;
+  white-space: pre;
 }
 
 .blogContent h2 {

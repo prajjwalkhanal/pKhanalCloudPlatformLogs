@@ -8,6 +8,8 @@ import { useEffect, useState } from "react";
 
 export default function Home() {
   const [externalPosts, setExternalPosts] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [filteredPosts, setFilteredPosts] = useState(posts);
 
   useEffect(() => {
     const fetchExternalData = async () => {
@@ -30,13 +32,30 @@ export default function Home() {
     fetchExternalData();
   }, []);
 
+  // Handle search filtering
+  useEffect(() => {
+    const results = posts.filter(post =>
+      post.title.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    setFilteredPosts(results);
+  }, [searchTerm]);
+
   return (
     <div className={styles.container}>
       <Navbar />
       <main className={styles.mainContent}>
-        <h1>Welcome to My Blog</h1>
+        <h3>DevOps Decoded: Pipelines, Power, and Zero Downtime Glory</h3>
+        <div className={styles.searchContainer}>
+          <input
+            type="text"
+            placeholder="Search posts..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className={styles.searchInput}
+          />
+        </div>
         <section className={styles.postList}>
-          {posts.map((post) => (
+          {filteredPosts.map((post) => (
             <div
               key={post.id}
               className={post.type === "internal" ? styles.internalPost : styles.externalPost}
@@ -71,7 +90,6 @@ export default function Home() {
         </section>
         <footer className={footer.footer}>
           <Link href="/about">About Me</Link>
-          <Link href="/blog"></Link>
         </footer>
       </main>
     </div>

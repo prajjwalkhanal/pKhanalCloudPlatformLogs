@@ -7,6 +7,11 @@
   margin-top: 20px;
 }
 
+.mainContent h3 {
+  text-align: left;
+  font-size: 20px;
+}
+
 .postList {
   display: grid;
   grid-template-columns: repeat(2, 1fr); /* Exactly 2 posts per row */
@@ -41,4 +46,24 @@
   background-color: #0070f3;
   color: white;
   text-decoration: none;
+}
+
+.searchContainer {
+  margin: 20px 0;
+  width: 100%;
+}
+
+.searchInput {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.searchInput:focus {
+  outline: none;
+  border-color: #0070f3;
+  box-shadow: 0 0 5px rgba(0, 112, 243, 0.3);
 }

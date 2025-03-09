@@ -2,26 +2,26 @@
 export const posts = [
   {
     id: 1,
-    title: "My First Blog Post",
-    content: "This is my first blog post content.",
+    title: "Automating AWS Deployments with PowerShell and cfn-init",
+    content: "Automation is a key part of modern DevOps, and Windows PowerShell is a powerful tool for managing AWS resources, deploying applications, and configuring servers.",
     type: "internal", // "internal" for your posts
   },
   {
     id: 2,
-    title: "Learning Next.js",
-    content: "This post is about learning Next.js and its features.",
-    type: "internal", // "internal" for your posts
-  },
-  {
-    id: 3,
     title: "AWS CloudTrail network activity events for VPC endpoints now generally available",
     url: "https://aws.amazon.com/blogs/aws/aws-cloudtrail-network-activity-events-for-vpc-endpoints-now-generally-available/", // External URL
     type: "external", // "external" for external links
   },
   {
-    id: 4,
-    title: "The Future of AI",
-    url: "https://www.ai.com/future-of-ai", // External URL
+    id: 3,
+    title: "Healthcare industry’s first unified voice AI assistant",
+    url: "https://news.microsoft.com/2025/03/03/microsoft-dragon-copilot-provides-the-healthcare-industrys-first-unified-voice-ai-assistant-that-enables-clinicians-to-streamline-clinical-documentation-surface-information-and-automate-task/", // External URL
     type: "external", // "external" for external links
+  },
+  {
+    id: 4,
+    title: "Key Benefits of AWS CDK in DevOps",
+    content: "The AWS Cloud Development Kit (CDK) is a powerful framework that allows developers and DevOps engineers to define cloud infrastructure using familiar programming languages like TypeScript, Python, or JavaScript. Unlike traditional CloudFormation templates, CDK brings a programmatic approach to infrastructure as code (IaC), making it a game-changer for modern DevOps workflows.",
+    type: "internal", // "internal" for your posts
   },
 ];

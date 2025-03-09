@@ -1,25 +1,103 @@
 .container {
-  font-family: Arial, sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #0d1117; /* Dark GitHub-inspired bg */
+  color: #c9d1d9; /* Soft off-white for text */
+  font-family: 'Inter', sans-serif; /* Modern tech font */
 }
 
 .aboutContent {
-  padding: 50px;
-  background: #f9f9f9;
+  padding: 80px 20px;
+  max-width: 900px;
+  margin: 0 auto;
   text-align: center;
+  flex-grow: 1;
+  position: relative;
+  overflow: hidden;
 }
 
+/* Subtle glowing line effect behind the title */
 .aboutContent h2 {
-  font-size: 36px;
+  font-size: 2.8rem;
+  color: #58a6ff; /* Bright blue for a techy glow */
+  margin-bottom: 30px;
+  position: relative;
+  z-index: 1;
+}
+
+.aboutContent h2::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #58a6ff, transparent);
+  animation: glow 3s infinite ease-in-out;
+}
+
+@keyframes glow {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
 }
 
 .aboutContent p {
-  font-size: 18px;
-  margin-top: 20px;
+  font-size: 1.2rem;
+  line-height: 1.8;
+  margin-bottom: 25px;
+  color: #8b949e; /* Muted gray for body text */
+}
+
+.aboutContent strong {
+  color: #c3e88d; /* Soft green for emphasis */
+  font-weight: 600;
+}
+
+.links {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
 }
 
 .links a {
-  margin: 0 15px;
-  color: cyan;
+  padding: 12px 28px;
+  background: #21262d; /* Dark button bg */
+  color: #58a6ff;
   text-decoration: none;
-  font-weight: bold;
+  border-radius: 50px;
+  font-size: 1rem;
+  font-weight: 500;
+  border: 1px solid #30363d;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Hover effect with a subtle neon glow */
+.links a:hover {
+  background: #58a6ff;
+  color: #0d1117;
+  box-shadow: 0 0 15px rgba(88, 166, 255, 0.5);
+  border-color: #58a6ff;
+}
+
+.links a::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.4s ease, height 0.4s ease;
+}
+
+.links a:hover::before {
+  width: 200px;
+  height: 200px;
 }
