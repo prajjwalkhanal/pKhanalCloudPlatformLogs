@@ -1,8 +1,6 @@
-// src/pages/_app.js
-import '../styles/global.css';  // Import the global CSS here
+import '../styles/global.css'; // If you have global styles
 
-function MyApp({ Component, pageProps }) {
+export default function MyApp({ Component, pageProps }) {
+  // No useEffect needed since we're not using Mermaid or client-side diagramming anymore
   return <Component {...pageProps} />;
 }
-
-export default MyApp;

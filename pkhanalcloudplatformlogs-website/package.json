@@ -9,6 +9,12 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@reactflow/background": "^11.3.14",
+    "@reactflow/controls": "^11.2.14",
+    "@reactflow/core": "^11.11.4",
+    "@reactflow/minimap": "^11.7.14",
+    "axios": "^1.8.2",
+    "diagram-js": "^15.2.4",
     "next": "^15.2.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"

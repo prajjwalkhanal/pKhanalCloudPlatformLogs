@@ -99,6 +99,7 @@ Write-Output "CloudFormation stack $stackName is being created."
 
       <footer className={footerStyles.footer}>
         <Link href="/about">About Me</Link>
+        <Link href="/diagram-generator">Arch</Link>
       </footer>
     </div>
   );

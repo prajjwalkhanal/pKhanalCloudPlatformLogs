@@ -90,6 +90,7 @@ export default function Home() {
         </section>
         <footer className={footerStyles.footer}>
           <Link href="/about">About Me</Link>
+          <Link href="/diagram-generator">Arch</Link>
         </footer>
       </main>
     </div>

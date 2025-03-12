@@ -1,122 +1,255 @@
 import Navbar from '../../components/Navbar';
 import styles from '../../styles/Post.module.css';
-import footerStyles from '../../styles/Footer.module.css'; // Renamed to avoid confusion with "footer" component
+import footerStyles from '../../styles/Footer.module.css';
 import Link from 'next/link';
 
-// Use named export for consistency with Next.js conventions
 export default function Post5() {
   return (
     <div className={styles.container}>
       <Navbar />
       <section className={styles.blogContent}>
-        <h2>Streamlining DevOps with AWS CDK</h2>
+        <h2>Monitoring Websites with AWS CloudWatch Synthetics Canaries</h2>
 
         <p>
-          The <strong>AWS Cloud Development Kit (CDK)</strong> is a powerful framework that allows developers and DevOps engineers to define cloud infrastructure using familiar programming languages like TypeScript, Python, or JavaScript. Unlike traditional CloudFormation templates, CDK brings a programmatic approach to infrastructure as code (IaC), making it a game-changer for modern DevOps workflows.
+          Keeping websites online is a big part of my job as a DevOps Engineer, and I’ve found <strong>AWS CloudWatch Synthetics Canaries</strong> to be a simple yet powerful way to do it. I’m excited to share how I use them with <strong>CloudFormation</strong> to monitor sites and get alerts when something goes wrong—especially in the healthcare industry where uptime matters.
         </p>
 
-        <h3>Why Use AWS CDK in DevOps?</h3>
+        <h3>Why CloudWatch Synthetics Canaries?</h3>
 
-        <p>The AWS CDK enhances DevOps practices because it:</p>
+        <p>Canaries are automated scripts that check your websites like a user would. Here’s why I like them:</p>
         <ul>
-          <li><strong>Simplifies infrastructure definition</strong> using code instead of YAML/JSON</li>
-          <li><strong>Enables reusable components</strong> through constructs and patterns</li>
-          <li><strong>Integrates with CI/CD pipelines</strong> for automated deployments</li>
-          <li><strong>Provides type safety and IDE support</strong> for faster development</li>
+          <li><strong>Reliable Checks</strong>: They test availability and catch issues early.</li>
+          <li><strong>Automation</strong>: No more manual pings—just set it up and let it run.</li>
+          <li><strong>Alerts</strong>: Pair them with SNS to get notified when a site’s down.</li>
+          <li><strong>Flexibility</strong>: Customize scripts to check what matters to you.</li>
         </ul>
 
-        <h3>Defining Infrastructure with AWS CDK</h3>
+        <h3>Monitoring Australian Websites</h3>
 
         <p>
-          With CDK, you can define an EC2 instance, configure it, and deploy applications programmatically. Below is an example of how I use CDK with TypeScript to set up an EC2 instance and install <strong>Node.js</strong> automatically.
+          I recently set up a Canary to monitor some Australian sites—<strong>qantas.com.au</strong>, <strong>news.com.au</strong>, and <strong>domain.com.au</strong>. The script checks each site, logs details, and sends an SNS alert with a screenshot if anything fails. Here’s the CloudFormation template I used to deploy it.
         </p>
 
-        <h4>AWS CDK Example: EC2 Instance with Node.js</h4>
-
+        <h4>CloudFormation Template with Canary and SNS</h4>
+        
         <pre>
           <code>
-            {`import * as cdk from 'aws-cdk-lib';
-import * as ec2 from 'aws-cdk-lib/aws-ec2';
-import * as iam from 'aws-cdk-lib/aws-iam';
+            {`AWSTemplateFormatVersion: '2010-09-09'
+Description: 'CloudFormation template for a CloudWatch Synthetics Canary to monitor Australian websites with SNS alerts'
 
-export class MyEc2Stack extends cdk.Stack {
-  constructor(scope: cdk.App, id: string, props?: cdk.StackProps) {
-    super(scope, id, props);
+Resources:
+  CanaryBucket:
+    Type: 'AWS::S3::Bucket'
+    Properties:
+      BucketName: !Sub 'website-monitoring-canary-\${AWS::Region}-\${AWS::AccountId}'
+      LifecycleConfiguration:
+        Rules:
+          - Id: 'ExpireObjectsAfter30Days'
+            Status: 'Enabled'
+            ExpirationInDays: 30
 
-    // Define a VPC
-    const vpc = new ec2.Vpc(this, 'MyVPC', {
-      maxAzs: 2,
-    });
+  SNSTopic:
+    Type: 'AWS::SNS::Topic'
+    Properties:
+      TopicName: 'WebsiteDownAlerts'
 
-    // Define the EC2 instance
-    const instance = new ec2.Instance(this, 'MyInstance', {
-      vpc,
-      instanceType: new ec2.InstanceType('t2.micro'),
-      machineImage: ec2.MachineImage.latestAmazonLinux2(),
-      userData: ec2.UserData.forLinux(),
-    });
+  CanaryRole:
+    Type: 'AWS::IAM::Role'
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: 'Allow'
+            Principal:
+              Service: 'lambda.amazonaws.com'
+            Action: 'sts:AssumeRole'
+      Policies:
+        - PolicyName: 'CanaryExecutionPolicy'
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Effect: 'Allow'
+                Action:
+                  - 'logs:CreateLogGroup'
+                  - 'logs:CreateLogStream'
+                  - 'logs:PutLogEvents'
+                Resource: '*'
+              - Effect: 'Allow'
+                Action:
+                  - 's3:PutObject'
+                  - 's3:GetObject'
+                Resource: !Sub 'arn:aws:s3:::\${CanaryBucket}/*'
+              - Effect: 'Allow'
+                Action:
+                  - 's3:GetBucketLocation'
+                Resource: !Sub 'arn:aws:s3:::\${CanaryBucket}'
+              - Effect: 'Allow'
+                Action:
+                  - 'cloudwatch:PutMetricData'
+                Resource: '*'
+              - Effect: 'Allow'
+                Action:
+                  - 'synthetics:*'
+                Resource: '*'
+              - Effect: 'Allow'
+                Action:
+                  - 'sns:Publish'
+                Resource: !Ref SNSTopic
 
-    // Add UserData to install Node.js
-    instance.userData.addCommands(
-      'sudo yum update -y',
-      'curl -sL https://rpm.nodesource.com/setup_16.x | sudo bash -',
-      'sudo yum install -y nodejs',
-      'node --version > /home/ec2-user/node_version.txt',
-    );
+  WebsiteMonitoringCanary:
+    Type: 'AWS::Synthetics::Canary'
+    Properties:
+      Name: 'WebsiteMonitoringCanary'
+      Code:
+        Handler: 'index.handler'
+        Script: |
+          const synthetics = require('Synthetics');
+          const log = require('SyntheticsLogger');
+          const { SNSClient, PublishCommand } = require('@aws-sdk/client-sns');
 
-    // Add permissions if needed
-    instance.role.addManagedPolicy(
-      iam.ManagedPolicy.fromAwsManagedPolicyName('AmazonSSMManagedInstanceCore'),
-    );
-  }
-}
+          const snsClient = new SNSClient({ region: process.env.AWS_REGION });
 
-const app = new cdk.App();
-new MyEc2Stack(app, 'MyEc2Stack');
+          const urls = [
+            'https://www.qantas.com.au',
+            'https://www.news.com.au',
+            'https://www.domain.com.au',
+          ];
+
+          log.info('Generated URLs: ' + JSON.stringify(urls));
+
+          const snsTopicArn = process.env.SNS_TOPIC_ARN;
+
+          async function checkWebsites() {
+            let page = await synthetics.getPage();
+
+            for (let url of urls) {
+              let pageContent = '';
+              try {
+                log.info('Checking: ' + url);
+
+                const response = await page.goto(url, { waitUntil: 'load', timeout: 90000 });
+
+                const requestHeaders = await page.evaluate(() => {
+                  return JSON.stringify(window.performance.getEntriesByType('resource'));
+                });
+                log.info(\`Request Headers for \${url}: \${requestHeaders}\`);
+
+                if (!response || !response.ok()) {
+                  throw new Error(\`Failed to load \${url} (Status: \${response ? response.status() : 'No Response'})\`);
+                }
+
+                log.info(\`Response Headers for \${url}: \${JSON.stringify(response.headers())}\`);
+
+                if (response.status() === 301) {
+                  const redirectedUrl = response.headers()['location'];
+                  log.info(\`Redirected to: \${redirectedUrl}\`);
+                  if (!redirectedUrl || !redirectedUrl.startsWith('https://')) {
+                    throw new Error(\`Invalid or missing redirect URL for \${url}\`);
+                  }
+                  log.info(\`Final redirect location for \${url}: \${redirectedUrl}\`);
+                }
+
+                pageContent = await page.content();
+                if (!pageContent || pageContent.trim().length < 150) {
+                  throw new Error(\`Invalid page content detected for \${url}. Content length: \${pageContent.trim().length}\`);
+                }
+
+                log.info(\`Page Content for \${url}: \${pageContent.substring(0, 500)}...\`);
+
+                if (pageContent.includes('error1') || pageContent.includes('error2') || pageContent.includes('error3') || pageContent.includes('error4') || pageContent.includes('error5')) {
+                  throw new Error(\`Detected error or missing content in \${url}\`);
+                }
+
+                log.info(\`\${url} is UP\`);
+              } catch (error) {
+                log.error(\`Website Down: \${url}, Error: \${error.message}\`);
+
+                try {
+                  const screenshotName = \`screenshot-\${Date.now()}.png\`;
+                  await synthetics.takeScreenshot(screenshotName, 'fail');
+                  log.info(\`Screenshot taken for failed website: \${screenshotName}\`);
+
+                  const command = new PublishCommand({
+                    Message: \`ALERT: Website DOWN - \${url}. Error: \${error.message}. Screenshot: \${screenshotName}\`,
+                    Subject: 'Website Down Alert',
+                    TopicArn: snsTopicArn,
+                  });
+
+                  await snsClient.send(command);
+                  log.info(\`SNS Notification sent for \${url}\`);
+                } catch (snsPublishError) {
+                  log.error(\`SNS Notification Failed: \${snsPublishError}\`);
+                }
+              }
+            }
+          }
+
+          exports.handler = async () => {
+            await checkWebsites();
+          };
+      ExecutionRoleArn: !GetAtt CanaryRole.Arn
+      RuntimeVersion: 'syn-nodejs-puppeteer-3.9'
+      Schedule:
+        Expression: 'rate(5 minutes)'
+        DurationInSeconds: '3600'
+      ArtifactS3Location: !Sub 's3://\${CanaryBucket}/canary-artifacts/'
+      StartCanaryAfterCreation: true
+      FailureRetentionPeriod: 31
+      SuccessRetentionPeriod: 31
+      EnvironmentVariables:
+        SNS_TOPIC_ARN: !Ref SNSTopic
+
+Outputs:
+  CanaryName:
+    Description: 'Name of the Canary'
+    Value: !Ref WebsiteMonitoringCanary
+  S3BucketName:
+    Description: 'S3 Bucket for Canary artifacts'
+    Value: !Ref CanaryBucket
+  SNSTopicArn:
+    Description: 'ARN of the SNS Topic for alerts'
+    Value: !Ref SNSTopic
 `}
           </code>
         </pre>
 
-        <h3>Deploying with AWS CDK</h3>
+        <h3>Deploying the Template</h3>
 
-        <p>Once the CDK stack is defined, I deploy it using the CDK CLI:</p>
+        <p>To get this running, I deploy it with the AWS CLI:</p>
 
         <pre>
           <code>
-            {`# Initialize the CDK project
-cdk init app --language typescript
-
-# Install dependencies
-npm install aws-cdk-lib
-
-# Deploy the stack
-cdk deploy MyEc2Stack
+            {`aws cloudformation deploy \\
+  --template-file canary-template.yaml \\
+  --stack-name WebsiteMonitoringStack \\
+  --capabilities CAPABILITY_NAMED_IAM
 `}
           </code>
         </pre>
 
         <p>
-          This automates the creation of the EC2 instance with Node.js installed, integrating seamlessly into a DevOps pipeline.
+          Once deployed, the Canary checks the sites every 5 minutes and sends an SNS alert if anything’s off—complete with a screenshot for debugging.
         </p>
 
-        <h3>Key Benefits of AWS CDK in DevOps</h3>
+        <h3>What I’ve Learned</h3>
 
         <ul>
-          <li><strong>Code-driven IaC</strong> reduces errors and improves maintainability</li>
-          <li><strong>Modular design</strong> allows teams to share and reuse infrastructure patterns</li>
-          <li><strong>CI/CD integration</strong> enables automated testing and deployment</li>
-          <li><strong>Faster iteration</strong> with real-time feedback via CDK synth</li>
+          <li><strong>Easy Setup</strong>: CloudFormation makes this repeatable and consistent.</li>
+          <li><strong>Real-Time Alerts</strong>: SNS keeps me in the loop without constant monitoring.</li>
+          <li><strong>Debugging Help</strong>: Screenshots are a lifesaver for figuring out what went wrong.</li>
+          <li><strong>Scalability</strong>: Add more URLs or tweak the script as needed.</li>
         </ul>
 
         <h3>Final Thoughts</h3>
 
         <p>
-          The <strong>AWS CDK</strong> transforms DevOps by bringing software engineering principles to infrastructure management. Whether provisioning resources, automating deployments, or scaling applications, CDK empowers teams to work faster and more efficiently.
+          Using <strong>CloudWatch Synthetics Canaries</strong> with CloudFormation has been a practical way to keep tabs on websites. It’s one of those tools that quietly does its job, letting me focus on other challenges while knowing I’ll hear about any issues right away.
         </p>
       </section>
 
       <footer className={footerStyles.footer}>
         <Link href="/about">About Me</Link>
+        <Link href="/diagram-generator">Arch</Link>
       </footer>
     </div>
   );

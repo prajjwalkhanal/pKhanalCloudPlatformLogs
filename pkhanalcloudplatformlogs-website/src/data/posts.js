@@ -14,8 +14,8 @@ export const posts = [
   },
   {
     id: 3,
-    title: "Monitoring Websites with AWS CloudWatch Synthetics Canaries",
-    content: "Keeping websites online is a big part of my job as a DevOps Engineer, and I’ve found AWS CloudWatch Synthetics Canaries to be a simple yet powerful way to do it. I’m excited to share how I use them with CloudFormation to monitor sites and get alerts when something goes wrong—especially in the healthcare industry where uptime matters.",
+    title: "Key Benefits of AWS CDK in DevOps",
+    content: "The AWS Cloud Development Kit (CDK) is a powerful framework that allows developers and DevOps engineers to define cloud infrastructure using familiar programming languages like TypeScript, Python, or JavaScript. Unlike traditional CloudFormation templates, CDK brings a programmatic approach to infrastructure as code (IaC), making it a game-changer for modern DevOps workflows.",
     type: "internal", // "internal" for your posts
   },
   {
@@ -26,8 +26,8 @@ export const posts = [
   },
   {
     id: 5,
-    title: "Key Benefits of AWS CDK in DevOps",
-    content: "The AWS Cloud Development Kit (CDK) is a powerful framework that allows developers and DevOps engineers to define cloud infrastructure using familiar programming languages like TypeScript, Python, or JavaScript. Unlike traditional CloudFormation templates, CDK brings a programmatic approach to infrastructure as code (IaC), making it a game-changer for modern DevOps workflows.",
+    title: "Monitoring Websites with AWS CloudWatch Synthetics Canaries",
+    content: "Keeping websites online is a big part of my job as a DevOps Engineer, and I’ve found AWS CloudWatch Synthetics Canaries to be a simple yet powerful way to do it. I’m excited to share how I use them with CloudFormation to monitor sites and get alerts when something goes wrong—especially in the healthcare industry where uptime matters.",
     type: "internal", // "internal" for your posts
   },
 ];
