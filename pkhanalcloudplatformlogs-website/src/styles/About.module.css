@@ -25,6 +25,15 @@
   z-index: 1;
 }
 
+.aboutContent h3 {
+  font-size: 1.6rem;
+  color: #7e61d0;
+  text-shadow: 0 0 8px #5c33cc;
+  margin-bottom: 30px;
+  position: relative;
+  z-index: 1;
+}
+
 .aboutContent h2::after {
   content: '';
   position: absolute;

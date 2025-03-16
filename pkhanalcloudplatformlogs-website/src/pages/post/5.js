@@ -9,6 +9,9 @@ export default function Post5() {
       <Navbar />
       <section className={styles.blogContent}>
         <h2>Monitoring Websites with AWS CloudWatch Synthetics Canaries</h2>
+        <p className={styles.date}>Published on March 8, 2025</p>
+
+        <h3>Introduction</h3>
 
         <p>
           Keeping websites online is a big part of my job as a DevOps Engineer, and I’ve found <strong>AWS CloudWatch Synthetics Canaries</strong> to be a simple yet powerful way to do it. I’m excited to share how I use them with <strong>CloudFormation</strong> to monitor sites and get alerts when something goes wrong—especially in the healthcare industry where uptime matters.
@@ -249,7 +252,6 @@ Outputs:
 
       <footer className={footerStyles.footer}>
         <Link href="/about">About Me</Link>
-        <Link href="/diagram-generator">Arch</Link>
       </footer>
     </div>
   );

@@ -9,6 +9,9 @@ export default function Post1() {
       <Navbar />
       <section className={styles.blogContent}>
         <h2>Automating AWS Deployments with PowerShell and cfn-init</h2>
+        <p className={styles.date}>Published on March 1, 2025</p>
+        
+        <h3>Introduction</h3>
 
         <p>
           Automation is a key part of modern DevOps, and <strong>Windows PowerShell</strong> is a powerful tool for managing AWS resources, deploying applications, and configuring servers. By integrating PowerShell with <strong>AWS CloudFormation</strong> and <strong>cfn-init</strong>, we can automate infrastructure setup and software installations efficiently.
@@ -99,7 +102,6 @@ Write-Output "CloudFormation stack $stackName is being created."
 
       <footer className={footerStyles.footer}>
         <Link href="/about">About Me</Link>
-        <Link href="/diagram-generator">Arch</Link>
       </footer>
     </div>
   );

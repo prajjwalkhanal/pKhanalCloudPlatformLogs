@@ -10,6 +10,9 @@ export default function Post3() {
       <Navbar />
       <section className={styles.blogContent}>
         <h2>Streamlining DevOps with AWS CDK</h2>
+        <p className={styles.date}>Published on March 5, 2025</p>
+
+        <h3>Introduction</h3>
 
         <p>
           The <strong>AWS Cloud Development Kit (CDK)</strong> is a powerful framework that allows developers and DevOps engineers to define cloud infrastructure using familiar programming languages like TypeScript, Python, or JavaScript. Unlike traditional CloudFormation templates, CDK brings a programmatic approach to infrastructure as code (IaC), making it a game-changer for modern DevOps workflows.
@@ -117,7 +120,6 @@ cdk deploy MyEc2Stack
 
       <footer className={footerStyles.footer}>
         <Link href="/about">About Me</Link>
-        <Link href="/diagram-generator">Arch</Link>
       </footer>
     </div>
   );

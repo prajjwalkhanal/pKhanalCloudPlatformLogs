@@ -223,10 +223,11 @@ function DiagramGeneratorComponent() {
                 </ReactFlow>
               </ReactFlowProvider>
             </div>
-            {/* JSON on bottom */}
+            {/* JSON on bottom
             <pre>
               <code>{JSON.stringify(architectureJson, null, 2)}</code>
             </pre>
+            */}
           </div>
         )}
 

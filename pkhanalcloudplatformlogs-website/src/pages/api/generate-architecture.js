@@ -16,7 +16,7 @@ export default async function handler(req, res) {
 
   try {
     const prompt = `
-    You are an expert IT system architect and diagram designer. Your task is to generate a detailed AWS system architecture diagram based on the following user requirements. The output should include:
+    You are an expert IT system architect. Your task is to generate a detailed AWS system architecture based on the following user requirements. The output should include:
     1. A structured description of the architecture layers, components, and their roles (e.g.,Route53, WAF, ALB, compute, DB,etc.).
     2. Clear relationships and interactions between the components (e.g. data flow or communication paths between loadbalancer and servers).
     3. Recommended AWS-specific technologies for each component (e.g. Route53, WAF, ALB, EC2, RDS, ELB).

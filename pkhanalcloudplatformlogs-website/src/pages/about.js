@@ -8,7 +8,7 @@ export default function About() {
     <div className={styles.container}>
       <Navbar />
       <section className={styles.aboutContent}>
-        <h2>Hi, I’m Prajjwal Khanal</h2>
+        <h3>Hi, I’m Prajjwal Khanal</h3>
         <p>
           I’m a <strong>DevOps Engineer</strong> working in the healthcare industry, where I get to contribute to systems that make a difference. Tech has been my home for as long as I can remember, and I’m grateful to have spent my career exploring its possibilities.
         </p>
@@ -16,7 +16,7 @@ export default function About() {
           Right now, I’m focused on building and optimising cloud infrastructure—trying to make things a little smoother, a little smarter. I’ve always been drawn to innovation and the way technology keeps pushing us forward. It’s humbling to be part of that journey, learning every day and tackling new challenges.
         </p>
         <p>
-          Outside of work, I enjoy digging into the latest architectures, tools and ideas in tech, often with a cup of tea in hand. I’m just here to share what I’ve picked up along the way and maybe inspire someone else to dive into this amazing field.
+          Outside of work, I enjoy digging into the latest ideas and tools in tech, often with a cup of tea in hand. I’m just here to share what I’ve picked up along the way and maybe inspire someone else to dive into this amazing field.
         </p>
         <div className={styles.links}>
           <a
@@ -38,7 +38,6 @@ export default function About() {
 
       <footer className={footerStyles.footer}>
         <Link href="/">Home</Link>
-        <Link href="/diagram-generator">Arch</Link>
       </footer>
     </div>
   );
