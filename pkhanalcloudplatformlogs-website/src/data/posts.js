@@ -7,6 +7,12 @@ export const posts = [
     type: "internal", // "internal" for your posts
   },
   {
+    id: 7,
+    title: "DevOps combines development (Dev) and operations (Ops) to unite people, process, and technology in application planning, development, delivery, and operations.",
+    url: "https://learn.microsoft.com/en-us/devops/what-is-devops", // External URL
+    type: "external", // "external" for external links
+  },
+  {
     id: 5,
     title: "Monitoring Websites with AWS CloudWatch Synthetics Canaries",
     content: "Keeping websites online is a big part of my job as a DevOps Engineer, and I’ve found AWS CloudWatch Synthetics Canaries to be a simple yet powerful way to do it. I’m excited to share how I use them with CloudFormation to monitor sites and get alerts when something goes wrong—especially in the healthcare industry where uptime matters.",
