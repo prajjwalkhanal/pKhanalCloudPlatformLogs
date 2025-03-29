@@ -31,17 +31,22 @@ export const posts = [
     type: "internal", // "internal" for your posts
   },
   {
-    id: 2,
-    title: "AWS CloudTrail network activity events for VPC endpoints now generally available",
-    url: "https://aws.amazon.com/blogs/aws/aws-cloudtrail-network-activity-events-for-vpc-endpoints-now-generally-available/", // External URL
+    id: 8,
+    title: "The open-source AI model Llama from Meta in Amazon Bedrock",
+    url: "https://aws.amazon.com/blogs/aws/introducing-llama-3-2-models-from-meta-in-amazon-bedrock-a-new-generation-of-multimodal-vision-and-lightweight-models/", // External URL
     type: "external", // "external" for external links
   },
-
   {
     id: 1,
     title: "Automating AWS Deployments with PowerShell and cfn-init",
     content: "Automation is a key part of modern DevOps, and Windows PowerShell is a powerful tool for managing AWS resources, deploying applications, and configuring servers.",
     type: "internal", // "internal" for your posts
+  },
+  {
+    id: 2,
+    title: "AWS CloudTrail network activity events for VPC endpoints now generally available",
+    url: "https://aws.amazon.com/blogs/aws/aws-cloudtrail-network-activity-events-for-vpc-endpoints-now-generally-available/", // External URL
+    type: "external", // "external" for external links
   },
 
 ];
