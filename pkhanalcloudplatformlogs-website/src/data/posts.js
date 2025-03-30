@@ -1,9 +1,9 @@
 // src/data/posts.js
-export const posts = [
+export const posts = [  
   {
-    id: 6,
-    title: "How AI Agents Work and Building an AWS Diagram Generator",
-    content: "AI can take a simple sentence and turn it into something useful—like a diagram. In this post, we’ll explore how we built, a tool that creates AWS architecture diagrams from text input using AI. We’ll cover three main steps: connecting to an AI API from both the frontend and backend, how the AI builds the architecture, and how we draw it as a diagram.",
+    id: 8,
+    title: "Retro Run: A Nostalgic Twist",
+    content: "My childhood gaming obsession—from Mario to GTA. I turned that nostalgia into Retro Run, a memory game with classic game cards. What’s your retro gaming fave?",
     type: "internal", // "internal" for your posts
   },
   {
@@ -13,9 +13,9 @@ export const posts = [
     type: "external", // "external" for external links
   },
   {
-    id: 5,
-    title: "Monitoring Websites with AWS CloudWatch Synthetics Canaries",
-    content: "Keeping websites online is a big part of my job as a DevOps Engineer, and I’ve found AWS CloudWatch Synthetics Canaries to be a simple yet powerful way to do it. I’m excited to share how I use them with CloudFormation to monitor sites and get alerts when something goes wrong—especially in the healthcare industry where uptime matters.",
+    id: 6,
+    title: "How AI Agents Work and Building an AWS Diagram Generator",
+    content: "AI can take a simple sentence and turn it into something useful—like a diagram. In this post, we’ll explore how we built, a tool that creates AWS architecture diagrams from text input using AI. We’ll cover three main steps: connecting to an AI API from both the frontend and backend, how the AI builds the architecture, and how we draw it as a diagram.",
     type: "internal", // "internal" for your posts
   },
   {
@@ -25,9 +25,9 @@ export const posts = [
     type: "external", // "external" for external links
   },
   {
-    id: 3,
-    title: "Key Benefits of AWS CDK in DevOps",
-    content: "The AWS Cloud Development Kit (CDK) is a powerful framework that allows developers and DevOps engineers to define cloud infrastructure using familiar programming languages like TypeScript, Python, or JavaScript. Unlike traditional CloudFormation templates, CDK brings a programmatic approach to infrastructure as code (IaC), making it a game-changer for modern DevOps workflows.",
+    id: 5,
+    title: "Monitoring Websites with AWS CloudWatch Synthetics Canaries",
+    content: "Keeping websites online is a big part of my job as a DevOps Engineer, and I’ve found AWS CloudWatch Synthetics Canaries to be a simple yet powerful way to do it. I’m excited to share how I use them with CloudFormation to monitor sites and get alerts when something goes wrong—especially in the healthcare industry where uptime matters.",
     type: "internal", // "internal" for your posts
   },
   {
@@ -37,9 +37,9 @@ export const posts = [
     type: "external", // "external" for external links
   },
   {
-    id: 1,
-    title: "Automating AWS Deployments with PowerShell and cfn-init",
-    content: "Automation is a key part of modern DevOps, and Windows PowerShell is a powerful tool for managing AWS resources, deploying applications, and configuring servers.",
+    id: 3,
+    title: "Key Benefits of AWS CDK in DevOps",
+    content: "The AWS Cloud Development Kit (CDK) is a powerful framework that allows developers and DevOps engineers to define cloud infrastructure using familiar programming languages like TypeScript, Python, or JavaScript. Unlike traditional CloudFormation templates, CDK brings a programmatic approach to infrastructure as code (IaC), making it a game-changer for modern DevOps workflows.",
     type: "internal", // "internal" for your posts
   },
   {
@@ -47,6 +47,12 @@ export const posts = [
     title: "AWS CloudTrail network activity events for VPC endpoints now generally available",
     url: "https://aws.amazon.com/blogs/aws/aws-cloudtrail-network-activity-events-for-vpc-endpoints-now-generally-available/", // External URL
     type: "external", // "external" for external links
+  },
+  {
+    id: 1,
+    title: "Automating AWS Deployments with PowerShell and cfn-init",
+    content: "Automation is a key part of modern DevOps, and Windows PowerShell is a powerful tool for managing AWS resources, deploying applications, and configuring servers.",
+    type: "internal", // "internal" for your posts
   },
 
 ];

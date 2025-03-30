@@ -42,6 +42,7 @@ const generateCards = (size) => {
 };
 
 export default function MemoryGame() {
+
   const levels = [2, 4, 6, 8, 10, 12]; // Grid sizes: 2x2, 4x4, 6x6, 8x8, 10x10 , 12x12
   const [level, setLevel] = useState(0); // Start at 2x2 (index 0)
   const [cards, setCards] = useState([]); // Start empty, populate in useEffect
@@ -122,7 +123,7 @@ export default function MemoryGame() {
     <div className={styles.container}>
       <Navbar />
       <section className={styles.gameContent}>
-        <h1>Retro Run</h1>
+        <h1>Retro Run: A Nostalgic Twist</h1>
         <p>Match the pairs! Start with 2x2 and work your way up.</p>
         <div className={styles.stats}>
           <p>Level: {levels[level]}x{levels[level]}</p>
