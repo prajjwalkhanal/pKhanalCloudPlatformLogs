@@ -8,13 +8,23 @@ const Navbar = () => {
       <Link href="/">
         <h1 className={styles.logo}>pkhanalcloudlogs</h1>
       </Link>
-      <nav className={styles.menu}>
-        <ul className={styles.menuList}>
-          <li className={styles.menuItem}>
-            <Link href="../diagram-generator" className={styles.menuLink}>GenAr</Link>
-          </li>
-        </ul>
-      </nav>
+      <div className={styles.menuContainer}>
+        <div className={styles.hamburger}>
+          <span className={styles.bar}></span>
+          <span className={styles.bar}></span>
+          <span className={styles.bar}></span>
+        </div>
+        <nav className={styles.menu}>
+          <ul className={styles.menuList}>
+            <li className={styles.menuItem}>
+              <Link href="../diagram-generator" className={styles.menuLink}>GenAr</Link>
+            </li>
+            <li className={styles.menuItem}>
+              <Link href="/memory-game" className={styles.menuLink}>RetroRun</Link>
+            </li>
+          </ul>
+        </nav>
+      </div>
     </header>
   );
 };
